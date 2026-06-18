@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Faze — The marketplace where developers meet creators</title>
+    <meta
+      name="description"
+      content="Faze is the marketplace where app developers meet creators who grow real audiences. Post a campaign, get matched, close the deal."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ===== Nav ===== -->
+    <header class="nav">
+      <nav class="nav-inner" aria-label="Primary">
+        <a href="index.html" class="logo"><img src="assets/logo.png" alt="Faze logo" class="logo-mark" /><span class="gradient-text">Faze</span></a>
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="for-developers.html">For Developers</a></li>
+          <li><a href="for-creators.html">For Creators</a></li>
+          <li><a href="about.html">How It Works</a></li>
+        </ul>
+        <div class="nav-right">
+          <a href="download.html" class="nav-cta">Download</a>
+          <button
+            class="hamburger"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="nav-links"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- ===== Hero ===== -->
+      <section class="hero hero-video">
+        <video
+          class="hero-video-bg"
+          autoplay
+          muted
+          loop
+          playsinline
+          poster="assets/hero-poster.jpg"
+          aria-hidden="true"
+        >
+          <source src="assets/hero.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-scrim" aria-hidden="true"></div>
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="container">
+          <h1 class="reveal">
+            You built the app.<br />Now make
+            <span class="gradient-text">money</span>.
+          </h1>
+          <div class="store-badges reveal">
+            <a href="#" class="store-badge" aria-label="Download Faze on the App Store">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-3.07 2.5-4.54 2.62-4.62-1.43-2.09-3.65-2.38-4.44-2.41-1.89-.19-3.69 1.11-4.65 1.11-.96 0-2.44-1.08-4.02-1.05-2.07.03-3.98 1.2-5.04 3.06-2.15 3.73-.55 9.25 1.54 12.28 1.02 1.48 2.24 3.15 3.83 3.09 1.54-.06 2.12-.99 3.98-.99 1.86 0 2.38.99 4.01.96 1.66-.03 2.71-1.51 3.72-3 1.17-1.72 1.66-3.39 1.68-3.48-.04-.02-3.22-1.24-3.26-4.9zM14.13 3.78c.85-1.03 1.42-2.46 1.26-3.88-1.22.05-2.7.81-3.58 1.84-.79.91-1.48 2.37-1.29 3.76 1.36.11 2.75-.69 3.61-1.72z"/></svg>
+              <span>
+                <small>Download on the</small>
+                <strong>App Store</strong>
+              </span>
+            </a>
+            <span class="store-badge store-badge--soon" aria-label="Faze on Google Play coming soon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#34d399" d="M3.6 2.27a1.5 1.5 0 0 0-.6 1.2v17.06c0 .47.22.9.6 1.2l9.6-9.73-9.6-9.73z"/><path fill="#60a5fa" d="M3.6 2.27 13.2 12l3.06-3.1L5.3 1.3a1.5 1.5 0 0 0-1.7.97z"/><path fill="#f87171" d="M3.6 21.73c.47.37 1.13.42 1.7.1l10.96-7.6L13.2 12l-9.6 9.73z"/><path fill="#fbbf24" d="m16.26 8.9-3.06 3.1 3.06 3.1 4.2-2.42a1.5 1.5 0 0 0 0-2.56l-4.2-1.22z"/></svg>
+              <span>
+                <small>Coming soon to</small>
+                <strong>Google Play</strong>
+              </span>
+            </span>
+          </div>
+
+          <div class="aspire-onhero reveal">
+            <h2 class="aspire-headline">
+            Be the next
+            <span class="aspire-rotator" id="aspire-rotator">
+              <span class="aspire-avatar" aria-hidden="true"><img class="aspire-logo" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/e7/f6/e3/e7f6e3fb-8e24-ba31-03ff-aba23d60841f/AppIcon-0-0-1x_U007epad-0-0-0-1-0-P3-85-220.png/512x512bb.jpg" alt="" /></span>
+              <span class="aspire-name gradient-text">Sam Altman</span>
+            </span>
+          </h2>
+
+            <div class="hero-actions">
+              <a href="download.html" class="btn btn-primary">Start Your Campaign</a>
+              <a href="about.html" class="btn btn-secondary">See How It Works</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== App showcase ===== -->
+      <section class="showcase">
+        <div class="showcase-dots" aria-hidden="true"></div>
+        <div class="showcase-glow" aria-hidden="true"></div>
+        <div class="showcase-meteors" aria-hidden="true">
+          <span class="meteor" style="left: 8%; animation-delay: 0.1s; animation-duration: 5s"></span>
+          <span class="meteor" style="left: 16%; animation-delay: 1.4s; animation-duration: 7s"></span>
+          <span class="meteor" style="left: 23%; animation-delay: 0.6s; animation-duration: 4s"></span>
+          <span class="meteor" style="left: 31%; animation-delay: 2.1s; animation-duration: 6s"></span>
+          <span class="meteor" style="left: 39%; animation-delay: 0.3s; animation-duration: 8s"></span>
+          <span class="meteor" style="left: 47%; animation-delay: 1.8s; animation-duration: 5s"></span>
+          <span class="meteor" style="left: 55%; animation-delay: 0.9s; animation-duration: 6.5s"></span>
+          <span class="meteor" style="left: 63%; animation-delay: 2.6s; animation-duration: 4.5s"></span>
+          <span class="meteor" style="left: 71%; animation-delay: 0.4s; animation-duration: 7.5s"></span>
+          <span class="meteor" style="left: 79%; animation-delay: 1.2s; animation-duration: 5.5s"></span>
+          <span class="meteor" style="left: 87%; animation-delay: 2.3s; animation-duration: 6s"></span>
+          <span class="meteor" style="left: 95%; animation-delay: 0.7s; animation-duration: 8s"></span>
+        </div>
+        <div class="container showcase-split">
+          <div class="showcase-copy reveal">
+            <h2>Your campaigns and earnings, all in one place.</h2>
+            <p>
+              Track every campaign, watch creators go live, and see your payouts
+              update in real time — all from one clean dashboard.
+            </p>
+            <a href="download.html" class="btn btn-primary">Get the App</a>
+          </div>
+          <div class="showcase-frame reveal">
+            <img
+              src="assets/app-mockup.png"
+              alt="The Faze app shown on two phones — a campaign feed and an earnings screen with $385.05 in payouts"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Section divider ===== -->
+      <div class="container">
+        <div class="section-divider" aria-hidden="true"></div>
+      </div>
+
+      <!-- ===== How it works (step carousel) ===== -->
+      <section class="hiw" id="hiw">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>From idea to closed deal in three steps</h2>
+          </div>
+        </div>
+
+        <div class="hiw-carousel" id="hiw-carousel">
+          <div class="hiw-track">
+            <!-- Step 01 -->
+            <article class="hiw-slide" id="hiw-slide-0">
+              <div class="hiw-visual">
+                <div class="phone">
+                  <span class="phone-notch" aria-hidden="true"></span>
+                  <div class="phone-screen">
+                    <div class="scr-head">New Campaign</div>
+                    <div class="scr-media" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                    <div class="scr-row">
+                      <span class="scr-label">Budget</span>
+                      <span class="scr-pill">$500</span>
+                    </div>
+                    <div class="scr-line"></div>
+                    <div class="scr-line short"></div>
+                    <div class="scr-btn">Publish campaign</div>
+                  </div>
+                </div>
+                <div class="hiw-glow" aria-hidden="true"></div>
+              </div>
+              <div class="hiw-content">
+                <span class="hiw-num" aria-hidden="true">01</span>
+                <h3>Post your campaign</h3>
+                <p>
+                  Upload a short clip of your app, set a budget, and publish
+                  your campaign in minutes — no agencies, no back-and-forth.
+                </p>
+              </div>
+            </article>
+
+            <!-- Step 02 -->
+            <article class="hiw-slide hiw-slide--reverse" id="hiw-slide-1">
+              <div class="hiw-visual">
+                <div class="phone">
+                  <span class="phone-notch" aria-hidden="true"></span>
+                  <div class="phone-screen">
+                    <div class="scr-head">Creators</div>
+                    <div class="scr-creator">
+                      <span class="scr-avatar"></span>
+                      <span class="scr-stack"><span class="scr-line"></span><span class="scr-line short"></span></span>
+                      <span class="scr-pill">$120</span>
+                    </div>
+                    <div class="scr-creator">
+                      <span class="scr-avatar"></span>
+                      <span class="scr-stack"><span class="scr-line"></span><span class="scr-line short"></span></span>
+                      <span class="scr-pill">$85</span>
+                    </div>
+                    <div class="scr-creator is-active">
+                      <span class="scr-avatar"></span>
+                      <span class="scr-stack"><span class="scr-line"></span><span class="scr-line short"></span></span>
+                      <span class="scr-pill">$140</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="hiw-glow" aria-hidden="true"></div>
+              </div>
+              <div class="hiw-content">
+                <span class="hiw-num" aria-hidden="true">02</span>
+                <h3>Get matched with creators</h3>
+                <p>
+                  Real creators with engaged audiences pitch you their rate.
+                  Compare, message, and pick — the right deals come to you.
+                </p>
+              </div>
+            </article>
+
+            <!-- Step 03 -->
+            <article class="hiw-slide" id="hiw-slide-2">
+              <div class="hiw-visual">
+                <div class="phone">
+                  <span class="phone-notch" aria-hidden="true"></span>
+                  <div class="phone-screen scr-center">
+                    <span class="scr-check" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                    </span>
+                    <div class="scr-amount">$385.05</div>
+                    <div class="scr-sub">Held safely in escrow</div>
+                    <div class="scr-btn">Release payment</div>
+                  </div>
+                </div>
+                <div class="hiw-glow" aria-hidden="true"></div>
+              </div>
+              <div class="hiw-content">
+                <span class="hiw-num" aria-hidden="true">03</span>
+                <h3>Close the deal</h3>
+                <p>
+                  Confirm the creator, pay securely through escrow, and watch
+                  the downloads roll in once the post goes live.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="hiw-dots" role="tablist" aria-label="How it works steps">
+          <button class="hiw-dot is-active" type="button" role="tab" aria-selected="true" aria-label="Step 1: Post your campaign"></button>
+          <button class="hiw-dot" type="button" role="tab" aria-selected="false" aria-label="Step 2: Get matched with creators"></button>
+          <button class="hiw-dot" type="button" role="tab" aria-selected="false" aria-label="Step 3: Close the deal"></button>
+        </div>
+      </section>
+
+      <!-- ===== Section divider ===== -->
+      <div class="container">
+        <div class="section-divider" aria-hidden="true"></div>
+      </div>
+
+      <!-- ===== Stats / social proof ===== -->
+      <section class="stats">
+        <div class="container">
+          <div class="section-head reveal">
+            <h2>Builders and creators are already winning on Faze</h2>
+            <p>
+              Real campaigns, real downloads, real payouts — Faze connects the
+              people who build apps with the people who make them go viral.
+            </p>
+          </div>
+          <div class="stats-grid reveal">
+            <div class="stat">
+              <div class="stat-num gradient-text">10k+</div>
+              <div class="stat-label">Creators on the platform</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num gradient-text">2.4M</div>
+              <div class="stat-label">Downloads driven</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num gradient-text">$480k+</div>
+              <div class="stat-label">Paid out to developers</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num gradient-text">4.9★</div>
+              <div class="stat-label">Average campaign rating</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Marquee ===== -->
+      <div
+        class="marquee"
+        role="marquee"
+        aria-label="Faze highlights"
+      >
+        <div class="marquee-track gradient-text" aria-hidden="false">
+          <span>Built for vibe coders</span><span>·</span>
+          <span>15% only on closed deals</span><span>·</span>
+          <span>Secure escrow payments</span><span>·</span>
+          <span>No upfront cost</span><span>·</span>
+          <span>Deals come to you</span><span>·</span>
+        </div>
+        <div class="marquee-track gradient-text" aria-hidden="true">
+          <span>Built for vibe coders</span><span>·</span>
+          <span>15% only on closed deals</span><span>·</span>
+          <span>Secure escrow payments</span><span>·</span>
+          <span>No upfront cost</span><span>·</span>
+          <span>Deals come to you</span><span>·</span>
+        </div>
+      </div>
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+      <div class="container footer-inner">
+        <a href="index.html" class="logo"><img src="assets/logo.png" alt="Faze logo" class="logo-mark" /><span class="gradient-text">Faze</span></a>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+        </ul>
+        <p class="footer-copy">© 2026 Faze. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
