@@ -11,13 +11,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="icon" type="image/png" href="assets/logo.png" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- Liquid glass distortion filter (used by .btn-liquid-glass) -->
+    <svg class="visually-hidden" aria-hidden="true">
+      <defs>
+        <filter id="container-glass" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.05 0.05" numOctaves="1" seed="1" result="turbulence" />
+          <feGaussianBlur in="turbulence" stdDeviation="2" result="blurredNoise" />
+          <feDisplacementMap in="SourceGraphic" in2="blurredNoise" scale="70" xChannelSelector="R" yChannelSelector="B" result="displaced" />
+          <feGaussianBlur in="displaced" stdDeviation="4" result="finalBlur" />
+          <feComposite in="finalBlur" in2="finalBlur" operator="over" />
+        </filter>
+      </defs>
+    </svg>
+
     <!-- ===== Nav ===== -->
     <header class="nav">
       <nav class="nav-inner" aria-label="Primary">
@@ -60,8 +73,8 @@
         <div class="hero-glow" aria-hidden="true"></div>
         <div class="container">
           <h1 class="reveal">
-            You built the app.<br />Now make
-            <span class="gradient-text">money</span>.
+            You built the app.<br />Now get
+            <span class="gradient-text">downloads</span>.
           </h1>
           <div class="store-badges reveal">
             <a href="#" class="store-badge" aria-label="Download Faze on the App Store">
@@ -91,7 +104,11 @@
 
             <div class="hero-actions">
               <a href="download.html" class="btn btn-primary">Start Your Campaign</a>
-              <a href="about.html" class="btn btn-secondary">See How It Works</a>
+              <a href="about.html" class="btn btn-liquid-glass">
+                <span class="liquid-glass-shadow" aria-hidden="true"></span>
+                <span class="liquid-glass-blur" aria-hidden="true"></span>
+                <span class="liquid-glass-label">See How It Works</span>
+              </a>
             </div>
           </div>
         </div>
