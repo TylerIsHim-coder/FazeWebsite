@@ -8,6 +8,8 @@
 (function () {
   "use strict";
 
+  document.documentElement.classList.add("js-ready");
+
   /* ---------- Mobile nav toggle ---------- */
   var hamburger = document.querySelector(".hamburger");
   var navLinks = document.querySelector(".nav-links");
