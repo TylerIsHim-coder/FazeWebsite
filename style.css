@@ -40,32 +40,12 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-/* Continuous atmosphere — behind content, never covers UI */
 html {
   background-color: #100c0a;
 }
 
 body {
   margin: 0;
-  background-color: transparent;
-  background-image: none;
-  color: var(--text);
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
-  font-size: 17px;
-  line-height: 1.6;
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-  position: relative;
-  z-index: 0;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
   background-color: #100c0a;
   background-image:
     linear-gradient(
@@ -78,16 +58,19 @@ body::before {
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
-}
-
-/* Keep page content above the atmosphere layer */
-body > * {
-  position: relative;
-  z-index: 1;
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 img {
   max-width: 100%;
+  height: auto;
   display: block;
 }
 
@@ -1845,6 +1828,16 @@ html.js-ready .reveal.is-visible {
   border-radius: 0;
 }
 
+.cine-video {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
 /* Soft dissolve into page atmosphere — keep CTAs readable */
 .cine-hero::after {
   content: "";
@@ -1863,33 +1856,7 @@ html.js-ready .reveal.is-visible {
   );
 }
 
-.cine-video {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    #000 0%,
-    #000 50%,
-    rgba(0, 0, 0, 0.85) 68%,
-    rgba(0, 0, 0, 0.4) 85%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    #000 0%,
-    #000 50%,
-    rgba(0, 0, 0, 0.85) 68%,
-    rgba(0, 0, 0, 0.4) 85%,
-    transparent 100%
-  );
-}
-
-/* Soft mist wash only — kept behind UI (z below content) */
+/* Soft mist wash only — kept behind UI */
 .cine-blur-mask {
   position: absolute;
   left: 0;
@@ -1909,7 +1876,6 @@ html.js-ready .reveal.is-visible {
 .cine-nav {
   position: relative;
   z-index: 50;
-  isolation: isolate;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1939,12 +1905,19 @@ html.js-ready .reveal.is-visible {
   letter-spacing: -0.03em;
   color: #fff;
   text-decoration: none;
+  flex: none;
+  max-width: 100%;
 }
 
-.cine-logo-mark {
-  width: 32px;
-  height: 32px;
+.cine-logo-mark,
+.logo-mark {
+  width: 32px !important;
+  height: 32px !important;
+  max-width: 32px !important;
+  max-height: 32px !important;
   border-radius: 8px;
+  object-fit: contain;
+  flex: none;
 }
 
 .cine-nav-links {
@@ -2135,7 +2108,6 @@ html.js-ready .reveal.is-visible {
 .cine-content {
   position: relative;
   z-index: 10;
-  isolation: isolate;
   flex: 1;
   display: flex;
   flex-direction: column;
