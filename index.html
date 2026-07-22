@@ -11,40 +11,82 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="icon" type="image/png" href="assets/logo.png" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Liquid glass distortion filter (used by .btn-liquid-glass) -->
-    <svg class="visually-hidden" aria-hidden="true">
-      <defs>
-        <filter id="container-glass" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
-          <feTurbulence type="fractalNoise" baseFrequency="0.05 0.05" numOctaves="1" seed="1" result="turbulence" />
-          <feGaussianBlur in="turbulence" stdDeviation="2" result="blurredNoise" />
-          <feDisplacementMap in="SourceGraphic" in2="blurredNoise" scale="70" xChannelSelector="R" yChannelSelector="B" result="displaced" />
-          <feGaussianBlur in="displaced" stdDeviation="4" result="finalBlur" />
-          <feComposite in="finalBlur" in2="finalBlur" operator="over" />
-        </filter>
-      </defs>
-    </svg>
+    <!-- ===== Cinematic hero (full viewport) ===== -->
+    <div class="cine-hero">
+      <video
+        class="cine-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        aria-hidden="true"
+      >
+        <source
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260406_094145_4a271a6c-3869-4f1c-8aa7-aeb0cb227994.mp4"
+          type="video/mp4"
+        />
+      </video>
+      <div class="cine-blur-mask" aria-hidden="true"></div>
 
-    <!-- ===== Nav ===== -->
-    <header class="nav">
-      <nav class="nav-inner" aria-label="Primary">
-        <a href="index.html" class="logo"><img src="assets/logo.png" alt="Faze logo" class="logo-mark" /><span class="gradient-text">Faze</span></a>
-        <ul class="nav-links">
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="for-developers.html">For Brands</a></li>
-          <li><a href="for-creators.html">For Creators</a></li>
-          <li><a href="about.html">How It Works</a></li>
+      <!-- Navbar -->
+      <header class="cine-nav">
+        <a href="index.html" class="cine-logo animate-blur-fade-up" style="animation-delay: 0ms">
+          <img src="assets/logo.png" alt="" class="cine-logo-mark" />
+          <span>Faze</span>
+        </a>
+
+        <ul class="nav-links cine-nav-links" id="nav-links">
+          <li><a href="index.html" class="active animate-blur-fade-up" style="animation-delay: 100ms">Home</a></li>
+          <li><a href="for-developers.html" class="animate-blur-fade-up" style="animation-delay: 150ms">For Brands</a></li>
+          <li><a href="for-creators.html" class="animate-blur-fade-up" style="animation-delay: 200ms">For Creators</a></li>
+          <li><a href="about.html" class="animate-blur-fade-up" style="animation-delay: 250ms">How It Works</a></li>
+          <li><a href="download.html" class="animate-blur-fade-up" style="animation-delay: 300ms">Download</a></li>
+          <li class="cine-mobile-tools">
+            <a href="download.html" class="liquid-glass cine-pill">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              Search
+            </a>
+            <a
+              href="https://apps.apple.com/us/app/faze-marketing/id6778672309"
+              class="liquid-glass cine-icon-btn"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Get the app"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </a>
+          </li>
         </ul>
-        <div class="nav-right">
-          <a href="https://apps.apple.com/us/app/faze-marketing/id6778672309" class="nav-cta" target="_blank" rel="noopener noreferrer">Download</a>
+
+        <div class="cine-nav-right">
+          <a
+            href="download.html"
+            class="liquid-glass cine-pill animate-blur-fade-up"
+            style="animation-delay: 350ms"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            Search
+          </a>
+          <a
+            href="https://apps.apple.com/us/app/faze-marketing/id6778672309"
+            class="liquid-glass cine-icon-btn animate-blur-fade-up"
+            style="animation-delay: 400ms"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Get the app"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </a>
           <button
-            class="hamburger"
+            class="liquid-glass cine-icon-btn hamburger animate-blur-fade-up"
+            style="animation-delay: 350ms"
             aria-label="Toggle navigation menu"
             aria-expanded="false"
             aria-controls="nav-links"
@@ -52,86 +94,67 @@
             <span></span><span></span><span></span>
           </button>
         </div>
-      </nav>
-    </header>
+      </header>
 
-    <main>
-      <!-- ===== Hero ===== -->
-      <section class="hero hero-video">
-        <video
-          class="hero-video-bg"
-          autoplay
-          muted
-          loop
-          playsinline
-          poster="assets/hero-poster.jpg"
-          aria-hidden="true"
-        >
-          <source src="assets/hero.mp4" type="video/mp4" />
-        </video>
-        <div class="hero-scrim" aria-hidden="true"></div>
-        <div class="hero-glow" aria-hidden="true"></div>
-        <div class="container">
-          <h1 class="reveal">
-            You built the brand.<br />Now get
-            <span class="gradient-text">customers</span>.
-          </h1>
-          <div class="store-badges reveal">
-            <a href="https://apps.apple.com/us/app/faze-marketing/id6778672309" class="store-badge" target="_blank" rel="noopener noreferrer" aria-label="Download Faze on the App Store">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-3.07 2.5-4.54 2.62-4.62-1.43-2.09-3.65-2.38-4.44-2.41-1.89-.19-3.69 1.11-4.65 1.11-.96 0-2.44-1.08-4.02-1.05-2.07.03-3.98 1.2-5.04 3.06-2.15 3.73-.55 9.25 1.54 12.28 1.02 1.48 2.24 3.15 3.83 3.09 1.54-.06 2.12-.99 3.98-.99 1.86 0 2.38.99 4.01.96 1.66-.03 2.71-1.51 3.72-3 1.17-1.72 1.66-3.39 1.68-3.48-.04-.02-3.22-1.24-3.26-4.9zM14.13 3.78c.85-1.03 1.42-2.46 1.26-3.88-1.22.05-2.7.81-3.58 1.84-.79.91-1.48 2.37-1.29 3.76 1.36.11 2.75-.69 3.61-1.72z"/></svg>
-              <span>
-                <small>Download on the</small>
-                <strong>App Store</strong>
+      <!-- Hero content pinned to bottom -->
+      <div class="cine-content">
+        <div class="cine-content-inner">
+          <div class="cine-copy" id="cine-slide" data-slide="0">
+            <div class="cine-meta animate-blur-fade-up" style="animation-delay: 300ms">
+              <span class="cine-meta-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <span data-meta="rating">4.9 App Store</span>
               </span>
-            </a>
-            <span class="store-badge store-badge--soon" aria-label="Faze on Google Play coming soon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#34d399" d="M3.6 2.27a1.5 1.5 0 0 0-.6 1.2v17.06c0 .47.22.9.6 1.2l9.6-9.73-9.6-9.73z"/><path fill="#60a5fa" d="M3.6 2.27 13.2 12l3.06-3.1L5.3 1.3a1.5 1.5 0 0 0-1.7.97z"/><path fill="#f87171" d="M3.6 21.73c.47.37 1.13.42 1.7.1l10.96-7.6L13.2 12l-9.6 9.73z"/><path fill="#fbbf24" d="m16.26 8.9-3.06 3.1 3.06 3.1 4.2-2.42a1.5 1.5 0 0 0 0-2.56l-4.2-1.22z"/></svg>
-              <span>
-                <small>Coming soon to</small>
-                <strong>Google Play</strong>
+              <span class="cine-meta-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <span data-meta="time">Brands + creators</span>
               </span>
-            </span>
-          </div>
+              <span class="cine-meta-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span data-meta="date">Secure escrow</span>
+              </span>
+            </div>
 
-          <div class="aspire-onhero reveal">
-            <h2 class="aspire-headline">
-            Be the next
-            <span class="aspire-rotator" id="aspire-rotator">
-              <span class="aspire-avatar" aria-hidden="true"><img class="aspire-logo" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/e7/f6/e3/e7f6e3fb-8e24-ba31-03ff-aba23d60841f/AppIcon-0-0-1x_U007epad-0-0-0-1-0-P3-85-220.png/512x512bb.jpg" alt="" /></span>
-              <span class="aspire-name gradient-text">Sam Altman</span>
-            </span>
-          </h2>
+            <h1 class="cine-title animate-blur-fade-up" style="animation-delay: 400ms" data-meta="title">
+              You built the brand.<br />Now get customers.
+            </h1>
 
-            <div class="hero-actions">
-              <a href="download.html" class="btn btn-primary">Start Your Campaign</a>
-              <a href="about.html" class="btn btn-liquid-glass">
-                <span class="liquid-glass-shadow" aria-hidden="true"></span>
-                <span class="liquid-glass-blur" aria-hidden="true"></span>
-                <span class="liquid-glass-label">See How It Works</span>
+            <p class="cine-desc animate-blur-fade-up" style="animation-delay: 500ms" data-meta="desc">
+              The marketplace where any brand meets creators who grow real
+              audiences. Post a campaign, get matched, close the deal.
+            </p>
+
+            <div class="cine-actions">
+              <a
+                href="https://apps.apple.com/us/app/faze-marketing/id6778672309"
+                class="liquid-glass cine-btn-glass store-badge--glass animate-blur-fade-up"
+                style="animation-delay: 600ms"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Download on the App Store"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-3.07 2.5-4.54 2.62-4.62-1.43-2.09-3.65-2.38-4.44-2.41-1.89-.19-3.69 1.11-4.65 1.11-.96 0-2.44-1.08-4.02-1.05-2.07.03-3.98 1.2-5.04 3.06-2.15 3.73-.55 9.25 1.54 12.28 1.02 1.48 2.24 3.15 3.83 3.09 1.54-.06 2.12-.99 3.98-.99 1.86 0 2.38.99 4.01.96 1.66-.03 2.71-1.51 3.72-3 1.17-1.72 1.66-3.39 1.68-3.48-.04-.02-3.22-1.24-3.26-4.9zM14.13 3.78c.85-1.03 1.42-2.46 1.26-3.88-1.22.05-2.7.81-3.58 1.84-.79.91-1.48 2.37-1.29 3.76 1.36.11 2.75-.69 3.61-1.72z"/></svg>
+                <span>
+                  <small>Download on the</small>
+                  <strong>App Store</strong>
+                </span>
+              </a>
+              <a
+                href="about.html"
+                class="liquid-glass cine-btn-glass animate-blur-fade-up"
+                style="animation-delay: 700ms"
+              >
+                How It Works
               </a>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
 
-      <!-- ===== App showcase ===== -->
-      <section class="showcase">
-        <div class="showcase-dots" aria-hidden="true"></div>
-        <div class="showcase-glow" aria-hidden="true"></div>
-        <div class="showcase-meteors" aria-hidden="true">
-          <span class="meteor" style="left: 8%; animation-delay: 0.1s; animation-duration: 5s"></span>
-          <span class="meteor" style="left: 16%; animation-delay: 1.4s; animation-duration: 7s"></span>
-          <span class="meteor" style="left: 23%; animation-delay: 0.6s; animation-duration: 4s"></span>
-          <span class="meteor" style="left: 31%; animation-delay: 2.1s; animation-duration: 6s"></span>
-          <span class="meteor" style="left: 39%; animation-delay: 0.3s; animation-duration: 8s"></span>
-          <span class="meteor" style="left: 47%; animation-delay: 1.8s; animation-duration: 5s"></span>
-          <span class="meteor" style="left: 55%; animation-delay: 0.9s; animation-duration: 6.5s"></span>
-          <span class="meteor" style="left: 63%; animation-delay: 2.6s; animation-duration: 4.5s"></span>
-          <span class="meteor" style="left: 71%; animation-delay: 0.4s; animation-duration: 7.5s"></span>
-          <span class="meteor" style="left: 79%; animation-delay: 1.2s; animation-duration: 5.5s"></span>
-          <span class="meteor" style="left: 87%; animation-delay: 2.3s; animation-duration: 6s"></span>
-          <span class="meteor" style="left: 95%; animation-delay: 0.7s; animation-duration: 8s"></span>
-        </div>
+    <main>
+      <!-- ===== Showcase ===== -->
+      <section class="showcase scene-bg scene-bg--mist">
         <div class="container showcase-split">
           <div class="showcase-copy reveal">
             <h2>Your campaigns and earnings, all in one place.</h2>
@@ -139,25 +162,22 @@
               Track every campaign, watch creators go live, and see your payouts
               update in real time — all from one clean dashboard.
             </p>
-            <a href="download.html" class="btn btn-primary">Get the App</a>
+            <a href="download.html" class="liquid-glass cine-btn-glass">Get the App</a>
           </div>
           <div class="showcase-frame reveal">
             <img
               src="assets/app-mockup.png"
-              alt="The Faze app shown on two phones — a campaign feed and an earnings screen with $385.05 in payouts"
+              alt="The Faze app shown on two phones — a campaign feed and an earnings screen"
               loading="lazy"
             />
           </div>
         </div>
       </section>
 
-      <!-- ===== Section divider ===== -->
-      <div class="container">
-        <div class="section-divider" aria-hidden="true"></div>
-      </div>
+      <!-- divider removed for seamless scene blend -->
 
-      <!-- ===== How it works (step carousel) ===== -->
-      <section class="hiw" id="hiw">
+      <!-- ===== How it works ===== -->
+      <section class="hiw scene-bg scene-bg--canyon" id="hiw">
         <div class="container">
           <div class="section-head reveal">
             <h2>From idea to closed deal in three steps</h2>
@@ -166,7 +186,6 @@
 
         <div class="hiw-carousel" id="hiw-carousel">
           <div class="hiw-track">
-            <!-- Step 01 -->
             <article class="hiw-slide" id="hiw-slide-0">
               <div class="hiw-visual">
                 <div class="phone">
@@ -197,7 +216,6 @@
               </div>
             </article>
 
-            <!-- Step 02 -->
             <article class="hiw-slide hiw-slide--reverse" id="hiw-slide-1">
               <div class="hiw-visual">
                 <div class="phone">
@@ -233,7 +251,6 @@
               </div>
             </article>
 
-            <!-- Step 03 -->
             <article class="hiw-slide" id="hiw-slide-2">
               <div class="hiw-visual">
                 <div class="phone">
@@ -268,23 +285,22 @@
         </div>
       </section>
 
-      <!-- ===== Contact ===== -->
-      <section class="cta-band">
+      <section class="cta-band scene-bg scene-bg--glow">
         <div class="container reveal">
           <h2>Questions?</h2>
           <div class="hero-actions">
-            <a href="mailto:fazeappmarketing@gmail.com" class="btn btn-primary"
-              >Contact Us</a
-            >
+            <a href="mailto:fazeappmarketing@gmail.com" class="cine-btn-solid">Contact Us</a>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- ===== Footer ===== -->
     <footer class="footer">
       <div class="container footer-inner">
-        <a href="index.html" class="logo"><img src="assets/logo.png" alt="Faze logo" class="logo-mark" /><span class="gradient-text">Faze</span></a>
+        <a href="index.html" class="logo">
+          <img src="assets/logo.png" alt="Faze logo" class="logo-mark" />
+          <span>Faze</span>
+        </a>
         <ul class="footer-links">
           <li><a href="#">Privacy Policy</a></li>
           <li><a href="#">Terms of Use</a></li>

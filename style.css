@@ -1,33 +1,30 @@
 /* ============================================================
    Faze — shared styles
-   Design system + MagicUI effects ported to vanilla CSS
+   Cinematic black + liquid glass theme
    ============================================================ */
 
 :root {
-  /* Dark theme */
-  --bg: #0d0d0d;
-  /* translucent so the ambient body glow shows through elevated sections */
-  --bg-elevated: rgba(255, 255, 255, 0.022);
-  --card: #1a1a1a;
-  --border: #2a2a2a;
-  --text: #ffffff;
-  --muted: #a1a1aa;
-  --ring: #ffffff;
-  --grad-from: #ff2d55;
-  --grad-to: #22d3ee;
-  /* gradient text endpoint — vivid cyan reads fine on dark */
-  --grad-to-text: #22d3ee;
-  --gradient: linear-gradient(90deg, #ff2d55, #22d3ee);
-  /* soft shadows */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
-  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 20px 50px -25px rgba(0, 0, 0, 0.9);
-  --shadow-xl: 0 30px 60px -20px rgba(0, 0, 0, 0.9);
+  /* Warm dusk — softer than pure black */
+  --bg: #1c1714;
+  --bg-elevated: #241e1a;
+  --card: rgba(255, 245, 235, 0.045);
+  --border: rgba(255, 230, 210, 0.12);
+  --text: #faf7f5;
+  --muted: #b8aaa0;
+  --ring: #f5e6d8;
+  --grad-from: #ffffff;
+  --grad-to: #f0e0d0;
+  --grad-to-text: #ffffff;
+  --gradient: linear-gradient(90deg, #fff, #f0e0d0);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 20px 50px -25px rgba(40, 20, 10, 0.5);
+  --shadow-xl: 0 30px 60px -20px rgba(40, 20, 10, 0.55);
   --maxw: 1200px;
-  --nav-h: 72px;
-  /* z-index scale */
+  --nav-h: 80px;
   --z-nav: 50;
   --z-overlay: 40;
+  --glow: rgba(255, 130, 60, 0.16);
 }
 
 /* ---------- Reset ---------- */
@@ -45,30 +42,37 @@ html {
 
 body {
   margin: 0;
-  background-color: var(--bg);
-  /* ambient brand glows — keeps the dark theme but adds color depth */
-  background-image: radial-gradient(
-      ellipse 55% 45% at 12% 4%,
-      rgba(255, 45, 85, 0.14),
-      transparent 55%
-    ),
-    radial-gradient(
-      ellipse 50% 45% at 88% 10%,
-      rgba(34, 211, 238, 0.12),
-      transparent 55%
-    ),
-    radial-gradient(
-      ellipse 65% 50% at 50% 96%,
-      rgba(168, 85, 247, 0.1),
-      transparent 65%
-    );
-  background-attachment: fixed;
+  background-color: #100c0a;
+  background-image: none;
   color: var(--text);
   font-family: "Inter", system-ui, -apple-system, sans-serif;
   font-size: 17px;
   line-height: 1.6;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  position: relative;
+}
+
+/* One continuous cinematic sky behind the whole site — no section seams */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: #100c0a;
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(16, 12, 10, 0.25) 0%,
+      rgba(16, 12, 10, 0.35) 40%,
+      rgba(16, 12, 10, 0.55) 100%
+    ),
+    url("assets/section-bg-mist.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
 }
 
 img {
@@ -149,25 +153,80 @@ section {
   flex: none;
 }
 
-/* ---------- Gradient text (MagicUI: animated-gradient-text) ---------- */
+/* ---------- Gradient text (subtle white now) ---------- */
 .gradient-text {
-  background: linear-gradient(
-    90deg,
-    var(--grad-from),
-    var(--grad-to-text),
-    var(--grad-from)
-  );
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  animation: gradient-shift 6s linear infinite;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: unset;
+  color: var(--text);
+  animation: none;
 }
 
 @keyframes gradient-shift {
   to {
     background-position: -300% 0;
+  }
+}
+
+/* ---------- Liquid glass ---------- */
+.liquid-glass {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.01);
+  background-blend-mode: luminosity;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.liquid-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 255, 255, 0.15) 20%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0.15) 80%,
+    rgba(255, 255, 255, 0.45) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ---------- Blur fade up ---------- */
+/* No filter:blur — Safari leaves residual blur on text/nav */
+@keyframes blurFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-blur-fade-up {
+  opacity: 0;
+  animation: blurFadeUp 0.9s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-blur-fade-up {
+    opacity: 1;
+    animation: none;
+    transform: none;
   }
 }
 
@@ -177,16 +236,16 @@ section {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  height: 56px;
-  padding-inline: 32px;
+  height: 52px;
+  padding-inline: 28px;
   border-radius: 999px;
-  font-weight: 700;
-  font-size: 1.0625rem;
+  font-weight: 500;
+  font-size: 1rem;
   font-family: inherit;
   cursor: pointer;
   border: none;
   white-space: nowrap;
-  transition: transform 0.2s ease, box-shadow 0.25s ease, opacity 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
 }
 
 .btn:focus-visible {
@@ -194,71 +253,62 @@ section {
   outline-offset: 3px;
 }
 
-/* Primary = gradient pill with MagicUI shimmer */
-.btn-primary {
-  position: relative;
-  isolation: isolate;
-  color: #fff;
-  background: var(--gradient);
-  overflow: hidden;
-  box-shadow: 0 8px 30px -10px rgba(255, 45, 85, 0.55);
+.btn-primary,
+.cine-btn-solid {
+  color: #000;
+  background: #fff;
+  box-shadow: none;
 }
 
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 40px -10px rgba(34, 211, 238, 0.6);
+.btn-primary:hover,
+.cine-btn-solid:hover {
+  background: #e5e5e5;
+  transform: none;
+  box-shadow: none;
 }
 
-.btn-primary:active {
-  transform: translateY(0);
-}
-
-/* Shimmer sweep (MagicUI: shimmer-button) */
 .btn-primary::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(
-    115deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.55) 50%,
-    transparent 70%
-  );
-  transform: translateX(-100%);
-  animation: shimmer-slide 3s linear infinite;
+  display: none;
 }
 
-@keyframes shimmer-slide {
-  to {
-    transform: translateX(100%);
-  }
-}
-
-/* Secondary = outlined pill */
 .btn-secondary {
   color: var(--text);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.01);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: #3a3a3a;
-  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.06);
+  transform: none;
 }
 
-/* Liquid glass = frosted, light-bending pill (21st.dev liquid-glass-button) */
+.cine-btn-solid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: auto;
+  padding: 12px 32px;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+/* Liquid glass = frosted pill (legacy class kept) */
 .btn-liquid-glass {
   position: relative;
   isolation: isolate;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.01);
   color: var(--text);
   transition: transform 0.3s ease;
 }
 
 .btn-liquid-glass:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .btn-liquid-glass:active {
@@ -271,33 +321,17 @@ section {
   z-index: 0;
   border-radius: inherit;
   pointer-events: none;
-  box-shadow:
-    0 0 8px rgba(0, 0, 0, 0.03),
-    0 2px 6px rgba(0, 0, 0, 0.08),
-    inset 3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.09),
-    inset -3px -3px 0.5px -3.5px rgba(255, 255, 255, 0.85),
-    inset 1px 1px 1px -0.5px rgba(255, 255, 255, 0.6),
-    inset -1px -1px 1px -0.5px rgba(255, 255, 255, 0.6),
-    inset 0 0 6px 6px rgba(255, 255, 255, 0.12),
-    inset 0 0 2px 2px rgba(255, 255, 255, 0.06),
-    0 0 12px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
 }
 
 .liquid-glass-blur {
   position: absolute;
   inset: 0;
   z-index: -1;
-  isolation: isolate;
   border-radius: inherit;
   overflow: hidden;
-  backdrop-filter: url(#container-glass);
-  -webkit-backdrop-filter: blur(6px);
-}
-
-@supports (backdrop-filter: url(#container-glass)) {
-  .liquid-glass-blur {
-    -webkit-backdrop-filter: url(#container-glass);
-  }
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
 }
 
 .liquid-glass-label {
@@ -376,90 +410,92 @@ section {
   letter-spacing: 0.01em;
 }
 
-/* ---------- Navbar (floating glassmorphism pill) ---------- */
+/* ---------- Navbar (inner pages — cinematic flat bar) ---------- */
 .nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: var(--z-nav);
-  padding: 24px 16px 0;
+  padding: 16px 16px 0;
 }
 
 .nav-inner {
   width: 100%;
-  max-width: 1040px;
+  max-width: 1200px;
   margin-inline: auto;
-  height: 58px;
-  padding: 0 10px 0 22px;
+  height: 56px;
+  padding: 0 8px 0 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
   border-radius: 999px;
-  background: rgba(22, 22, 22, 0.72);
-  -webkit-backdrop-filter: saturate(160%) blur(14px);
-  backdrop-filter: saturate(160%) blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.01);
+  background-blend-mode: luminosity;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08);
 }
 
 .logo {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: #fff;
 }
 
 .logo-mark {
-  width: 34px;
-  height: 34px;
-  border-radius: 9px;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
   flex: none;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 28px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
 .nav-links a {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--muted);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
   transition: color 0.2s ease;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: var(--text);
+  color: #fff;
 }
 
 .nav-cta {
   display: inline-flex;
   align-items: center;
-  height: 44px;
-  padding-inline: 24px;
+  height: 40px;
+  padding-inline: 20px;
   border-radius: 999px;
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: #fff;
-  background: var(--gradient);
-  box-shadow: 0 6px 20px -8px rgba(255, 45, 85, 0.6);
-  transition: transform 0.2s ease, box-shadow 0.25s ease;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: #000;
+  background: #fff;
+  box-shadow: none;
+  transition: background 0.2s ease;
 }
 
 .nav-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 26px -8px rgba(34, 211, 238, 0.6);
+  transform: none;
+  background: #e5e5e5;
+  box-shadow: none;
 }
 
 .nav-right {
@@ -922,7 +958,7 @@ section {
 
 /* brand reveal on hover */
 .card:hover .card-icon {
-  color: #ff6b8a;
+  color: #fff;
   border-color: rgba(255, 45, 85, 0.35);
 }
 
@@ -1101,7 +1137,7 @@ section {
   align-items: center;
   justify-content: center;
   color: rgba(255, 255, 255, 0.92);
-  background: linear-gradient(140deg, rgba(255, 45, 85, 0.45), rgba(34, 211, 238, 0.32));
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04));
 }
 .scr-media svg {
   width: 34px;
@@ -1156,15 +1192,15 @@ section {
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 .scr-creator.is-active {
-  border-color: rgba(255, 45, 85, 0.5);
-  background: rgba(255, 45, 85, 0.08);
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.08);
 }
 .scr-avatar {
   flex: none;
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: linear-gradient(140deg, #ff2d55, #22d3ee);
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.08));
 }
 .scr-stack {
   flex: 1;
@@ -1190,9 +1226,9 @@ section {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  color: #fff;
-  background: linear-gradient(140deg, #ff2d55, #22d3ee);
-  box-shadow: 0 12px 30px -8px rgba(255, 45, 85, 0.6);
+  color: #000;
+  background: #fff;
+  box-shadow: 0 12px 30px -8px rgba(255, 255, 255, 0.25);
 }
 .scr-check svg {
   width: 30px;
@@ -1612,18 +1648,16 @@ section {
   font-size: 0.9rem;
 }
 
-/* ---------- Scroll reveal (MagicUI: blur-fade) ---------- */
+/* ---------- Scroll reveal (no filter blur — Safari-safe) ---------- */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  filter: blur(6px);
-  transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .reveal.is-visible {
   opacity: 1;
   transform: none;
-  filter: blur(0);
 }
 
 /* ---------- Responsive ---------- */
@@ -1672,11 +1706,11 @@ section {
     grid-template-columns: 1fr;
   }
 
-  .hamburger {
+  .hamburger:not(.cine-icon-btn) {
     display: flex;
   }
 
-  .nav-links {
+  .nav-links:not(.cine-nav-links) {
     position: fixed;
     top: 94px;
     left: 16px;
@@ -1699,21 +1733,21 @@ section {
     z-index: var(--z-overlay);
   }
 
-  .nav-links.open {
+  .nav-links:not(.cine-nav-links).open {
     transform: none;
     opacity: 1;
     pointer-events: auto;
   }
 
-  .nav-links a {
+  .nav-links:not(.cine-nav-links) a {
     padding: 14px 16px;
     font-size: 1.05rem;
     border-radius: 14px;
     transition: background 0.2s ease, color 0.2s ease;
   }
 
-  .nav-links a:hover,
-  .nav-links a.active {
+  .nav-links:not(.cine-nav-links) a:hover,
+  .nav-links:not(.cine-nav-links) a.active {
     background: rgba(255, 255, 255, 0.06);
   }
 
@@ -1758,4 +1792,734 @@ section {
     transform: none;
     filter: none;
   }
+
+  .animate-blur-fade-up {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+/* ============================================================
+   Cinematic homepage hero
+   ============================================================ */
+
+.cine-hero {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100svh;
+  height: 100dvh;
+  min-height: 100svh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+/* Dissolve hero into the shared page atmosphere (no hard cut) */
+.cine-hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 45%;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(16, 12, 10, 0) 0%,
+    rgba(16, 12, 10, 0.15) 35%,
+    rgba(16, 12, 10, 0.55) 70%,
+    rgba(16, 12, 10, 0.92) 100%
+  );
+}
+
+.cine-video {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 50%,
+    rgba(0, 0, 0, 0.85) 68%,
+    rgba(0, 0, 0, 0.4) 85%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 50%,
+    rgba(0, 0, 0, 0.85) 68%,
+    rgba(0, 0, 0, 0.4) 85%,
+    transparent 100%
+  );
+}
+
+/* Soft mist wash only — kept behind UI (z below content) */
+.cine-blur-mask {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 36%;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(16, 12, 10, 0.35) 0%,
+    rgba(16, 12, 10, 0.1) 55%,
+    transparent 100%
+  );
+}
+
+.cine-nav {
+  position: relative;
+  z-index: 50;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 16px;
+}
+
+@media (min-width: 640px) {
+  .cine-nav {
+    padding: 20px 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .cine-nav {
+    padding: 24px 48px;
+  }
+}
+
+.cine-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: #fff;
+  text-decoration: none;
+}
+
+.cine-logo-mark {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+}
+
+.cine-nav-links {
+  display: none;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 1024px) {
+  .cine-nav-links {
+    display: flex;
+  }
+}
+
+.cine-nav-links a {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.2s ease;
+}
+
+.cine-nav-links a:hover,
+.cine-nav-links a.active {
+  color: #fff;
+}
+
+.cine-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cine-pill {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: #fff;
+}
+
+@media (min-width: 640px) {
+  .cine-pill {
+    display: inline-flex;
+    padding: 0 24px;
+  }
+}
+
+.cine-icon-btn {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex: none;
+}
+
+@media (min-width: 640px) {
+  .cine-icon-btn:not(.hamburger) {
+    display: inline-flex;
+  }
+}
+
+.cine-icon-btn.hamburger {
+  display: inline-flex;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .cine-icon-btn.hamburger {
+    display: none;
+  }
+}
+
+.cine-icon-btn.hamburger span {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  background: #fff;
+  border-radius: 2px;
+  position: absolute;
+  left: 50%;
+  margin-left: -8px;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.cine-icon-btn.hamburger span:nth-child(1) {
+  transform: translateY(-5px);
+}
+.cine-icon-btn.hamburger span:nth-child(3) {
+  transform: translateY(5px);
+}
+
+.cine-icon-btn.hamburger[aria-expanded="true"] span:nth-child(1) {
+  transform: rotate(45deg);
+}
+.cine-icon-btn.hamburger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.cine-icon-btn.hamburger[aria-expanded="true"] span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.cine-mobile-tools {
+  display: none;
+}
+
+/* Mobile menu for cine nav */
+@media (max-width: 1023px) {
+  .cine-nav-links {
+    position: absolute;
+    top: 72px;
+    left: 16px;
+    right: 16px;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 16px;
+    border-radius: 16px;
+    background: rgba(17, 17, 17, 0.95);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateY(-12px);
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .cine-nav-links.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .cine-nav-links a {
+    display: block;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .cine-nav-links a:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .cine-mobile-tools {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .cine-mobile-tools .cine-pill,
+  .cine-mobile-tools .cine-icon-btn {
+    display: inline-flex !important;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .cine-mobile-tools {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cine-mobile-tools {
+    display: none;
+  }
+}
+
+.cine-content {
+  position: relative;
+  z-index: 10;
+  isolation: isolate;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px 16px 64px;
+}
+
+@media (min-width: 640px) {
+  .cine-content {
+    padding: 32px 24px 72px;
+  }
+}
+
+@media (min-width: 768px) {
+  .cine-content {
+    padding: 32px 48px 80px;
+  }
+}
+
+.cine-content-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.cine-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.cine-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+@media (min-width: 640px) {
+  .cine-meta {
+    gap: 24px;
+    margin-bottom: 28px;
+    font-size: 0.875rem;
+  }
+}
+
+.cine-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cine-meta-item svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
+
+@media (min-width: 640px) {
+  .cine-meta-item svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.cine-title {
+  margin: 0 0 16px;
+  font-size: clamp(1.875rem, 6vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .cine-title {
+    margin-bottom: 24px;
+  }
+}
+
+.cine-desc {
+  margin: 0 0 28px;
+  max-width: 40rem;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+@media (min-width: 768px) {
+  .cine-desc {
+    margin-bottom: 40px;
+  }
+}
+
+.cine-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .cine-actions {
+    gap: 16px;
+  }
+}
+
+.cine-btn-solid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  color: #000;
+  background: #fff;
+  transition: background 0.2s ease;
+}
+
+.cine-btn-solid:hover {
+  background: #e5e5e5;
+}
+
+.cine-btn-glass {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  color: #fff;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease, background 0.25s ease;
+}
+
+.cine-btn-glass:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    inset 0 1px 1px rgba(255, 255, 255, 0.18);
+}
+
+.cine-btn-glass:active {
+  transform: translateY(-2px);
+}
+
+@media (min-width: 640px) {
+  .cine-btn-solid,
+  .cine-btn-glass {
+    padding: 12px 32px;
+    font-size: 1rem;
+  }
+}
+
+/* Floating hover for glass CTAs / pills / store badge */
+.liquid-glass.cine-pill,
+.liquid-glass.cine-icon-btn,
+.liquid-glass.cine-btn-glass,
+.liquid-glass.store-badge--glass,
+.btn-secondary {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease, background 0.25s ease;
+}
+
+.liquid-glass.cine-pill:hover,
+.liquid-glass.cine-icon-btn:hover,
+.liquid-glass.store-badge--glass:hover,
+.btn-secondary:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.18);
+}
+
+.cine-btn-solid {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease, background 0.25s ease;
+}
+
+.cine-btn-solid:hover {
+  transform: translateY(-6px);
+  background: #f2f2f2;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
+}
+
+.cine-copy.is-switching {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.cine-copy.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Soften remaining site chrome to match cinematic theme */
+.hero,
+main,
+main > section,
+.footer {
+  background: transparent !important;
+}
+
+/*
+  Sections no longer carry their own full-bleed images.
+  That was causing the hard horizontal seams.
+  They sit on the shared body atmosphere instead.
+*/
+.scene-bg {
+  position: relative;
+  overflow: visible;
+  isolation: auto;
+  background: transparent !important;
+  background-image: none !important;
+  background-color: transparent !important;
+  margin-top: 0;
+  border: none;
+  box-shadow: none;
+}
+
+/* Soft local glow only — no rectangular image edge */
+.scene-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 90% 70% at 50% 40%,
+    rgba(255, 120, 50, 0.08),
+    transparent 70%
+  );
+}
+
+.scene-bg::after {
+  display: none;
+}
+
+.scene-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+.scene-bg--mist::before {
+  background: radial-gradient(
+    ellipse 100% 80% at 50% 30%,
+    rgba(255, 140, 70, 0.1),
+    transparent 65%
+  );
+}
+
+.scene-bg--canyon::before {
+  background: radial-gradient(
+    ellipse 90% 70% at 40% 50%,
+    rgba(180, 80, 40, 0.09),
+    transparent 70%
+  );
+}
+
+.scene-bg--glow::before {
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 60%,
+    rgba(255, 100, 40, 0.12),
+    transparent 65%
+  );
+}
+
+.showcase.scene-bg,
+main > .scene-bg:first-of-type {
+  padding-top: clamp(80px, 12vh, 140px);
+}
+
+.hiw.scene-bg,
+.cta-band.scene-bg,
+.section-surface.scene-bg {
+  margin-top: 0;
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+.section-surface {
+  border-block: none;
+}
+
+/* App Store CTA — same liquid glass as How It Works */
+.store-badge--glass {
+  gap: 10px;
+  height: auto;
+  min-height: 52px;
+  padding: 8px 22px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.01);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  color: #fff;
+  text-align: left;
+}
+
+.store-badge--glass svg {
+  width: 22px;
+  height: 22px;
+  flex: none;
+}
+
+.store-badge--glass span {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.store-badge--glass small {
+  font-size: 0.65rem;
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+.store-badge--glass strong {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cine-btn-glass:hover,
+  .cine-btn-solid:hover,
+  .liquid-glass.cine-pill:hover,
+  .liquid-glass.cine-icon-btn:hover,
+  .liquid-glass.store-badge--glass:hover,
+  .btn-secondary:hover {
+    transform: none;
+  }
+}
+
+.showcase-glow,
+.hero-glow,
+.showcase-dots,
+.showcase-meteors,
+.hero-grid {
+  display: none !important;
+}
+
+.card {
+  background: rgba(255, 245, 235, 0.045);
+  border-color: rgba(255, 230, 210, 0.1);
+}
+
+.section-head h2,
+.hiw-content h3,
+.showcase-copy h2 {
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.scr-pill,
+.scr-btn,
+.scr-amount,
+.stat-num,
+.price {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+.scr-btn {
+  background: #fff !important;
+  color: #000 !important;
+}
+
+.hiw-dot.is-active {
+  background: #fff !important;
+}
+
+.footer {
+  border-top-color: rgba(255, 230, 210, 0.08);
+  background: transparent;
+}
+
+/* Inner pages: glass download pill in sticky nav */
+.page-nav-pill {
+  display: inline-flex !important;
+  height: 40px;
+  padding: 0 20px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.hero h1 {
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+.hero .sub {
+  color: #9ca3af;
+}
+
+.btn-primary {
+  border-radius: 999px;
 }

@@ -28,7 +28,7 @@
 
     // Reset menu state when resizing up to desktop
     window.addEventListener("resize", function () {
-      if (window.innerWidth > 720) {
+      if (window.innerWidth > 1023) {
         navLinks.classList.remove("open");
         hamburger.setAttribute("aria-expanded", "false");
       }
@@ -49,7 +49,7 @@
   });
 
   /* ---------- Hero video: respect reduced motion ---------- */
-  var heroVideo = document.querySelector(".hero-video-bg");
+  var heroVideo = document.querySelector(".hero-video-bg, .cine-video");
   if (
     heroVideo &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches
