@@ -30,7 +30,7 @@
 
     // Reset menu state when resizing up to desktop
     window.addEventListener("resize", function () {
-      if (window.innerWidth > 1023) {
+      if (window.innerWidth > 899) {
         navLinks.classList.remove("open");
         hamburger.setAttribute("aria-expanded", "false");
       }
@@ -184,5 +184,43 @@
       el.style.transitionDelay = (i % 4) * 70 + "ms";
       observer.observe(el);
     });
+  }
+
+  /* ---------- Hero "faze" pill: mouse parallax ---------- */
+  var pill = document.querySelector(".plat-pill");
+  if (pill && !reduceMotion) {
+    var targetX = 0;
+    var targetY = 0;
+    var curX = 0;
+    var curY = 0;
+    var baseRotate = -8;
+    var rafId = 0;
+
+    function tick() {
+      curX += (targetX - curX) * 0.14;
+      curY += (targetY - curY) * 0.14;
+      pill.style.transform =
+        "translateX(calc(-35% + " +
+        curX.toFixed(2) +
+        "px)) translateY(" +
+        curY.toFixed(2) +
+        "px) rotate(" +
+        baseRotate +
+        "deg)";
+      rafId = requestAnimationFrame(tick);
+    }
+
+    window.addEventListener(
+      "pointermove",
+      function (e) {
+        var cx = window.innerWidth * 0.5;
+        var cy = window.innerHeight * 0.35;
+        targetX = ((e.clientX - cx) / cx) * 22;
+        targetY = ((e.clientY - cy) / Math.max(cy, 1)) * 16;
+      },
+      { passive: true }
+    );
+
+    rafId = requestAnimationFrame(tick);
   }
 })();
