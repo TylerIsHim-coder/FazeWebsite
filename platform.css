@@ -76,8 +76,8 @@ body.plat {
   color: var(--plat-ink);
   background-color: var(--plat-bg);
   background-image:
-    radial-gradient(ellipse 90% 55% at 0% -5%, rgba(255, 77, 94, 0.38), transparent 58%),
-    radial-gradient(ellipse 90% 55% at 100% -5%, rgba(31, 200, 184, 0.36), transparent 58%);
+    radial-gradient(ellipse 90% 55% at 0% -5%, rgba(255, 77, 94, 0.22), transparent 58%),
+    radial-gradient(ellipse 90% 55% at 100% -5%, rgba(31, 200, 184, 0.2), transparent 58%);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   -webkit-font-smoothing: antialiased;
@@ -150,27 +150,27 @@ a {
 @media (max-width: 900px) {
   body.plat {
     background-image:
-      radial-gradient(ellipse 120% 70% at -10% 0%, rgba(255, 77, 94, 0.5), transparent 60%),
-      radial-gradient(ellipse 120% 70% at 110% 0%, rgba(31, 200, 184, 0.48), transparent 60%);
+      radial-gradient(ellipse 120% 70% at -10% 0%, rgba(255, 77, 94, 0.22), transparent 62%),
+      radial-gradient(ellipse 120% 70% at 110% 0%, rgba(31, 200, 184, 0.2), transparent 62%);
   }
 
   .plat-blob {
-    filter: blur(36px);
-    opacity: 1;
+    filter: blur(42px);
+    opacity: 0.55;
   }
 
   .plat-blob--tl {
     width: min(85vw, 420px);
     height: min(85vw, 420px);
-    top: -8%;
-    left: -22%;
+    top: -10%;
+    left: -24%;
   }
 
   .plat-blob--tr {
     width: min(80vw, 400px);
     height: min(80vw, 400px);
-    top: -6%;
-    right: -20%;
+    top: -8%;
+    right: -22%;
   }
 
   .plat-blob--bl {
@@ -178,8 +178,8 @@ a {
     height: min(70vw, 320px);
     bottom: 12%;
     left: -18%;
-    opacity: 0.55;
-    filter: blur(40px);
+    opacity: 0.3;
+    filter: blur(48px);
   }
 }
 
