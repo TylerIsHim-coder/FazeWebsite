@@ -74,9 +74,14 @@ body.plat {
   min-height: 100svh;
   font-family: var(--plat-font);
   color: var(--plat-ink);
-  background: var(--plat-bg);
+  background-color: var(--plat-bg);
+  background-image:
+    radial-gradient(ellipse 90% 55% at 0% -5%, rgba(255, 77, 94, 0.38), transparent 58%),
+    radial-gradient(ellipse 90% 55% at 100% -5%, rgba(31, 200, 184, 0.36), transparent 58%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
   position: relative;
 }
 
@@ -92,23 +97,24 @@ a {
 
 /* ---------- Red / teal atmosphere blobs ---------- */
 .plat-blob {
-  position: fixed;
+  position: absolute;
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
-  filter: blur(72px);
-  opacity: 0.72;
+  filter: blur(64px);
+  opacity: 0.85;
+  will-change: transform;
 }
 
 .plat-blob--tl {
   width: min(58vw, 640px);
   height: min(58vw, 640px);
-  top: -24%;
-  left: -18%;
+  top: -18%;
+  left: -14%;
   background: radial-gradient(
     circle,
-    rgba(255, 77, 94, 0.85) 0%,
-    rgba(255, 107, 122, 0.45) 38%,
+    rgba(255, 77, 94, 0.9) 0%,
+    rgba(255, 107, 122, 0.5) 40%,
     transparent 72%
   );
 }
@@ -116,12 +122,12 @@ a {
 .plat-blob--tr {
   width: min(54vw, 600px);
   height: min(54vw, 600px);
-  top: -20%;
-  right: -16%;
+  top: -14%;
+  right: -12%;
   background: radial-gradient(
     circle,
-    rgba(31, 200, 184, 0.85) 0%,
-    rgba(45, 212, 191, 0.42) 40%,
+    rgba(31, 200, 184, 0.9) 0%,
+    rgba(45, 212, 191, 0.48) 42%,
     transparent 72%
   );
 }
@@ -131,14 +137,50 @@ a {
   height: min(42vw, 440px);
   bottom: 6%;
   left: -12%;
-  opacity: 0.4;
-  filter: blur(80px);
+  opacity: 0.45;
+  filter: blur(70px);
   background: radial-gradient(
     circle,
-    rgba(255, 77, 94, 0.35) 0%,
-    rgba(31, 200, 184, 0.3) 45%,
+    rgba(255, 77, 94, 0.4) 0%,
+    rgba(31, 200, 184, 0.35) 45%,
     transparent 72%
   );
+}
+
+@media (max-width: 900px) {
+  body.plat {
+    background-image:
+      radial-gradient(ellipse 120% 70% at -10% 0%, rgba(255, 77, 94, 0.5), transparent 60%),
+      radial-gradient(ellipse 120% 70% at 110% 0%, rgba(31, 200, 184, 0.48), transparent 60%);
+  }
+
+  .plat-blob {
+    filter: blur(36px);
+    opacity: 1;
+  }
+
+  .plat-blob--tl {
+    width: min(85vw, 420px);
+    height: min(85vw, 420px);
+    top: -8%;
+    left: -22%;
+  }
+
+  .plat-blob--tr {
+    width: min(80vw, 400px);
+    height: min(80vw, 400px);
+    top: -6%;
+    right: -20%;
+  }
+
+  .plat-blob--bl {
+    width: min(70vw, 320px);
+    height: min(70vw, 320px);
+    bottom: 12%;
+    left: -18%;
+    opacity: 0.55;
+    filter: blur(40px);
+  }
 }
 
 /* ---------- Nav ---------- */
